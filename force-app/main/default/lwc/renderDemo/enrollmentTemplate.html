@@ -1,0 +1,25 @@
+ <template>
+    <lightning-card title="Enrollment Template">
+        <lightning-input 
+          type="text"
+          label="Enter Name"
+        ></lightning-input>
+        <lightning-input 
+          type="text"
+          label="Enter Email"
+        ></lightning-input>
+        <lightning-input 
+          type="password"
+          label="New Password"
+        ></lightning-input>
+        <lightning-input 
+          type="password"
+          label="Enter Confirm Password"
+        ></lightning-input>
+       <lightning-button 
+         variant="success"
+         label="Button Label" 
+         onclick={handleEnrollmentClick}  
+       ></lightning-button>
+    </lightning-card>
+</template>

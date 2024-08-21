@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Add Buttons In LWC Datatable Salesforce">
+        <div class="butt">
+            <lightning-button 
+            label="Download PDF" 
+            variant="brand"
+             onclick={handlepdfDownload}></lightning-button>
+        </div>
+        <div class="butt">
+        <lightning-button 
+          variant="success"
+          label="Download csv" 
+          onclick={handleDownload} 
+          class="slds-p-around_small"
+        ></lightning-button>
+        <template lwc:if={boolShowSpinner}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+    </div>
+
+        <div class="slds-p-around_small">
+            <lightning-combobox
+                name="recordCount"
+                label="Record Count"
+                value={recordCount}
+                options={recordCountOptions}
+                onchange={handleRecordCountChange}>
+            </lightning-combobox>
+            <lightning-input type="search" label="Search" value={searchTerm} onchange={handleSearch}></lightning-input>
+        </div>
+        <template lwc:if={filteredData}>
+            <lightning-datatable key-field="Id" data={filteredData} columns={columns} hide-checkbox-column="true"
+                show-row-number-column="true" onrowaction={callRowAction}>
+            </lightning-datatable>
+        </template>
+        <lightning-button-group>
+            <div class="slds-p-around_medium">
+                <lightning-button label="Previous" disabled={isPrevDisabled} onclick={handlePagePrevAction} variant="brand" name="Prev"></lightning-button>
+        </div>
+        <div class="slds-p-around_medium">
+        <span><b>{currentPage} --of-- {totalPages}</b></span>
+    </div>
+        <div class="slds-p-around_medium">
+            <lightning-button label="Next" disabled={isNextDisabled} onclick={handlePageNextAction} variant="brand" name="Next">
+            </lightning-button>
+            </div>
+        </lightning-button-group>
+        <template lwc:if={error}>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </lightning-card>
+</template>

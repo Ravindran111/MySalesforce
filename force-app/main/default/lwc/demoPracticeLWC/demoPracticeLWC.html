@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Looping Array">
+        <div class="slds-p-around_medium">
+            <template lwc:if={isArray}>
+        <template for:each={course} for:item="currentItem">
+          <div key={courseId} >
+            {currentItem}
+          </div>
+          </template>
+        </template>
+        <template lwc:else>
+            <b>Empty Array</b>
+          </template>
+        <div class="slds-p-around_medium">
+       <lightning-input label="InsertCourse" type="text" onchange={handlerchange}></lightning-input>
+    </div>
+    <div class= "slds-align_absolute-center slds-p-around_small">
+       <lightning-button label="ADD" type="button" onclick={handlerclick}></lightning-button>
+    </div>
+
+    </div>
+    </lightning-card>
+    
+</template> 

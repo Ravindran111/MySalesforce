@@ -1,0 +1,35 @@
+
+<template>
+    <template if:true={showLogin}>
+        <!-- Login Section -->
+        <lightning-card title="Login">
+            <lightning-input label="Name" value={name} onchange={handleNameChange}></lightning-input>
+            <lightning-input label="Email" type="email" value={email} onchange={handleEmailChange}></lightning-input>
+            <lightning-button label="Start Quiz" onclick={startQuiz}></lightning-button>
+        </lightning-card>
+    </template>
+
+    <template lwc:if={showQuiz}>
+        <!-- Quiz Section -->
+        <lightning-card title="Quiz">
+            <template lwc:if={quizQuestions[currentQuestionIndex]}>
+            <div>
+                <h2>{quizQuestions[currentQuestionIndex].question}</h2>
+                <template for:each={quizQuestions[currentQuestionIndex].options} for:item="option">
+                    <lightning-button key={option} label={option} onclick={handleAnswer}></lightning-button>
+                </template>
+            </div>
+            <div>
+                <p>Time Left: {timeLeft} seconds</p>
+            </div>
+        </template>
+        </lightning-card>
+
+        <template lwc:if={showFinish}>
+            <!-- Finish Section -->
+            <lightning-card title="Quiz Finished">
+                <lightning-button label="Play Again" onclick={playAgain}></lightning-button>
+            </lightning-card>
+        </template>
+    </template>
+</template>

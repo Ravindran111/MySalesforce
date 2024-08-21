@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title=" looping Iterator">
+        <div class="slds-p-around_medium">
+            <template iterator:it={employee}>
+                <div key={it.value.Id}>
+                    <template lwc:if={it.first}>
+                        <div class="slds-theme_alert-texture">
+                            <strong> top 3 employees</strong>
+                        </div>
+                    </template>
+                    {it.value.Name}
+                    <template lwc:if={it.last}>
+                     <div>
+                        <a href="www.lightningdesignsystem.com"> DesignSystem </a>
+                     </div>   
+                    </template>
+
+
+                </div>
+            </template>
+
+
+
+            
+        </div>
+    </lightning-card>
+    
+</template>

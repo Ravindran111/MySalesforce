@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Parent Component">
+        <div class="slds-m-around_medium">
+            <p> I am The Parent Component</p>
+           <lightning-tabset>
+            <lightning-tab label="ToDOList">
+                <c-to-dolist-demo></c-to-dolist-demo>
+            </lightning-tab>
+            <lightning-tab label="Item Three">
+               <c-template-looping></c-template-looping>
+            </lightning-tab>
+            <lightning-tab label="LWCref">
+                <c-lwc-ref></c-lwc-ref>
+             </lightning-tab>
+        </lightning-tabset>
+        </div>
+    </lightning-card>
+    
+</template>

@@ -1,0 +1,11 @@
+public with sharing class AccountDocumentController {
+    public List<Account> accounts { get; set; }
+
+    public AccountDocumentController() {
+        accounts = new List<Account>();
+        String idList = ApexPages.currentPage().getParameters().get('idList');
+        if (String.isNotBlank(idList)) {
+            accounts = [SELECT Id, Name, Industry FROM Account WHERE Id IN :idList.split(',')];
+        }
+    }
+}

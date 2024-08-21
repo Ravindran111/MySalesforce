@@ -1,0 +1,18 @@
+<template>
+    
+    <lightning-card title="Indian Monuments">
+        <div class="slds-m-around_medium"  >
+       <center> <lightning-button label="Indian Monuments" variant="brand" onclick={monuments}></lightning-button> </center>    
+        <template lwc:if={monumentstrue}>
+        <c-child-to-parent-parent oncanceling={handlecanceling}></c-child-to-parent-parent>
+    </template>
+   
+  <template lwc:if={display}>
+    <strong> {receivedarrayofmonuments} </strong> 
+    </template>
+    <template lwc:else>
+        <strong>No Favourite Spot Chosen</strong>
+    </template>  
+    </div>
+    </lightning-card>
+</template>

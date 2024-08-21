@@ -1,0 +1,29 @@
+<template> 
+    <lightning-card title="ToDoList">
+        <div class="slds-p-around_medium">
+        <template lwc:if={isToDoListAvl}>
+        <template for:each={toDolist} for:item="Item">
+            <div key={Item.taskId} class="slds-grid">
+                <div class="slds-p-around_medium slds-col whenTask">
+                {Item.taskName}
+            </div>
+            <div>
+                <lightning-button-icon name={Item.taskId} icon-name="utility:delete" variant="container" onclick={handleRemoveTask}></lightning-button-icon>
+            </div>
+            </div>
+        </template>
+    </template>
+    <template lwc:else>
+        <div class="taskclass slds-m-around_medium">
+           Have No TODO List....
+        </div>
+    </template>
+        <div class="  slds-m-around_medium slds-border_top">
+            <lightning-input label="Name"  value={newTask} type="text" onchange={handleName}></lightning-input>
+        </div>
+        <div class=" slds-p-around_medium">
+            <lightning-button label="ADD" onclick={handleADD}></lightning-button>
+        </div>
+    </div>
+    </lightning-card>   
+</template>

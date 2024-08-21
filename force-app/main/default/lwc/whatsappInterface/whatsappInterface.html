@@ -1,0 +1,15 @@
+<template>
+    <div class="chat-container">
+        <div class="chat-window">
+            <template for:each={messages} for:item="message">
+                <div key={message.id} class="chat-message" class={message.class}>
+                    {message.text}
+                </div>
+            </template>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type a message..." oninput={handleInputChange} onkeydown={handleKeyDown} value={message} />
+            <button onclick={handleSendMessage}>Send</button>
+        </div>
+    </div>
+</template>

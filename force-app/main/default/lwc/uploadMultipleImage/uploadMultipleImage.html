@@ -1,0 +1,54 @@
+<template>
+    <lightning-card icon-name="utility:photo" title="Upload & Preview File Before Saving File To Salesforce">
+        <div class="row">
+            <div class="custom-box">
+                <lightning-input
+                    type="file"
+                    multiple
+                    onchange={openfileUpload}
+                    accept={acceptedFormats}
+                ></lightning-input>
+            </div>
+        </div>
+        <!-- Uploaded Files -->
+        <div class="badge-container">
+            <template for:each={fileDataList} for:item="file">
+                <div key={file.id} class="badge">
+                    <p>{file.filename}</p>
+                    <lightning-button-icon
+                        icon-name="utility:preview"
+                        alternative-text="Preview"
+                        variant="brand"
+                        onclick={handlePreviewFile}
+                        data-id={file.id}
+                        class="slds-m-left_x-small"
+                    ></lightning-button-icon>
+                    <lightning-button-icon
+                        icon-name="utility:close"
+                        alternative-text="Remove"
+                        onclick={handleRemove}
+                        data-id={file.id}
+                        class="slds-m-left_x-small"
+                        variant="error"
+                        size="medium"
+                    ></lightning-button-icon>
+                </div>
+            </template>
+        </div>
+
+        <!-- File Preview -->
+        <div class="file-preview-container" lwc:if={showFilePreview}>
+            <template if:true={isImagePreview}>
+                <img src={fileSrc} alt="File Preview" />
+            </template>
+            <template if:false={isImagePreview}>
+                <iframe src={fileSrc} width="100%" height="600px"></iframe>
+            </template>
+        </div>
+
+        <div class="buttons">
+            <lightning-button label="Clear Preview" onclick={onClearPreview} variant="brand"></lightning-button>
+            <lightning-button label="Submit" onclick={onSubmitRecentPhoto} variant="success"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

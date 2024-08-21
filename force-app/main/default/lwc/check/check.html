@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Budget Plan And Budget Plan Allocation">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="email" onchange={handleChange} placeholder="type here..." name="emailAddress" required></lightning-input>
+        </div>
+
+        <lightning-button onclick={sendEmailHandler} label="Send Email" variant="brand" ></lightning-button>
+        <div class="slds-p-around_small">
+            <lightning-combobox 
+            label="Budget plan Available"
+            value={value}
+            placeholder="Select an Budget plan"
+            options={options}
+            onchange={handleChangedValue}>
+          </lightning-combobox>
+            <lightning-input type="search" label="Search" onchange={handleSearch}></lightning-input>
+        </div>
+        <template lwc:if={cardvisible}>
+
+                <div style="height: 200px;">
+                <lightning-datatable 
+                        key-field="Id"
+                        data = {data}
+                        columns = {column}>
+        
+                </lightning-datatable>
+            </div>
+             
+        </template>
+        <template lwc:else>
+        <lightning-datatable
+            key-field="Id"
+            data={data}
+            columns={columns}>
+        </lightning-datatable>
+    </template>
+    </lightning-card>
+</template>

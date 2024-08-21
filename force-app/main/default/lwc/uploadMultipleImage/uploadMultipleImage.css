@@ -1,0 +1,43 @@
+.file-preview-container {
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 2px solid black;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+.file-preview-container img,
+.file-preview-container iframe {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.buttons,
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+.badge-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-weight: 700;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

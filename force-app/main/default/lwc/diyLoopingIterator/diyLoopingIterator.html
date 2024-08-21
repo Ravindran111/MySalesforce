@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="LWC with Top 5 concepts">
+        <div class="slds-p-around_medium">
+           <template iterator:it={concept}>
+            <div key={it.value.Id}>
+                <template lwc:if={it.first}>
+                    <div class="slds-grid">
+                        <div class="slds-p-around_medium slds-col">
+                            {concept.Topics},
+                            {concept.concepts}
+                        </div>
+                    </div>
+                </template>
+            </div>
+           </template>
+        </div>
+    </lightning-card>
+    
+</template>

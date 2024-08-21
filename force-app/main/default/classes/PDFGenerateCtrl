@@ -1,0 +1,36 @@
+public class PDFGenerateCtrl {
+    @AuraEnabled(cacheable=true)
+    public static List<Contact> fetchRecords() {
+        return [SELECT Id, Name, Email FROM Contact];
+    }
+    @AuraEnabled
+    public static String sendPdf(String contactId) {
+        PageReference pdf = Page.ContactDataPDF;
+        pdf.getParameters().put('id', contactId);
+        Blob body;
+        try {  
+            body = pdf.getContent();
+        } catch (Exception e) {
+            body = Blob.valueOf('data');
+        }
+        ContentVersion CV = new ContentVersion();
+        CV.Title = 'TechdicerContact.pdf';
+        CV.PathOnClient = 'TechdicerContact.pdf';
+        CV.VersionData = body;
+        CV.FirstPublishLocationId = contactId;
+        insert CV;
+
+        Messaging.EmailFileAttachment attach = new Messaging.EmailFileAttachment();
+        attach.setContentType('application/pdf');
+        attach.setFileName('TechdicerContact.pdf');
+        attach.Body = body;
+
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        mail.setToAddresses(new String[] {'rijwanmohmmed@gmail.com'});
+        mail.setSubject('Generate PDF from Apex Salesforce');
+        mail.setHtmlBody('Generate PDF from Apex Salesforce');
+        mail.setFileAttachments(new Messaging.EmailFileAttachment[] {attach}); 
+        Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});
+        return 'Email sent Successfully with PDF.';
+    }
+}

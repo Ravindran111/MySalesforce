@@ -1,0 +1,39 @@
+<template>
+
+  <lightning-card label="Indian Monuments">
+    
+      <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+          <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+          </svg>
+          <span class="slds-assistive-text">close</span>
+          </button>
+          <div class="slds-modal__header">
+          <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Indian Monuments</h1>
+          </div>
+          <div class="slds-modal__content slds-p-around_medium slds-grid" id="modal-content-id-1">
+           <div style="width: 150px; height: 150px;margin:2px;" class="slds-col" >
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg">
+              <lightning-input class="taj"  type="checkbox" label="Taj Mahal" onclick={handletaj}></lightning-input>
+          </div>
+           <div style="width: 150px; height: 150px; margin:2px;" class="slds-col">
+              <img   src="https://www.fabhotels.com/blog/wp-content/uploads/2019/02/Lotus-Temple.jpg">
+              <lightning-input type="checkbox" class="lotus" label="Lotus Temple" onclick={handlelotus}></lightning-input>
+          </div>
+           <div style="width: 150px; height: 150px; margin:2px;" class="slds-col">
+              <img   src="https://www.fabhotels.com/blog/wp-content/uploads/2018/07/Agra-Fort.jpg:cf-webp:w-848:h-551">
+              <lightning-input type="checkbox" class="agra" label="Agra Fort" onclick={handleagra}></lightning-input></div>
+          </div>
+          <div class="slds-modal__footer">
+          <lightning-button label="cancel" variant="brand" onclick={handlecancel}></lightning-button>
+         
+          </div>
+          </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+     
+  </lightning-card>
+  
+</template>

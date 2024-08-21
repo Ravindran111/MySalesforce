@@ -1,0 +1,22 @@
+<template>
+    <div class="signature-container">
+        <canvas width="400" height="200" style="border: 1px solid #000; background-color: #fff;"></canvas>
+        <div class={signatureClass}>
+            <p>Your signature:</p>
+            <img src={signatureData} alt="Signature Preview" />
+        </div>
+        <lightning-button label="Clear" onclick={handleClear}></lightning-button>
+        <lightning-button label="Complete" onclick={handleComplete} class="complete-button" if:true={hasSignature}></lightning-button>
+        
+        <!-- Modal Popup -->
+        <template if:true={showModal}>
+            <div class="modal">
+                <div class="modal-content">
+                    <p>Do you want to convert this signature to a PDF?</p>
+                    <lightning-button label="Yes" onclick={handleYesClick}></lightning-button>
+                    <lightning-button label="No" onclick={handleNoClick}></lightning-button>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

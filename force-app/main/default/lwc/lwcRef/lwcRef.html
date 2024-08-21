@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="lwc:Ref">
+        <div class="slds-m-around_medium slds-p-around_medium">
+          <lightning-input  label="name" onchange={handleName}></lightning-input>
+          <lightning-input lwc:ref="refinputreq" label="Age" type="number" onchange={handleAgeChange}></lightning-input>
+
+          <div class="slds-m-around_medium slds-align_absolute-center">
+            <lightning-button label="check Eligibility" onclick={handleEligiblityClick}></lightning-button>
+          </div>
+          <div class="slds-align_absolute-center">
+             <lightning-button lwc:ref="refjoinbutton" label="join Driving School" disabled=true onclick={handlejoinschool}></lightning-button>
+          </div>
+          <div lwc:ref="refEligible">
+           <!--ELIGIBLE FOR DRIVING-->
+          </div>
+        </div>
+    </lightning-card>
+    
+</template>

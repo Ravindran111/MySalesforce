@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Signature Generator" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Enter Name" value={name} onchange={handleNameChange}></lightning-input>
+        </div>
+        <div class="slds-m-around_medium">
+            <lightning-button label="Pre-populate Signature" onclick={handlePrePopulate}></lightning-button>
+        </div>
+        
+        <!-- Modal -->
+        <template if:true={showModal}>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+
+                    <!-- Modal/Popup Header -->
+                    <header class="slds-modal__header">
+                        <lightning-button-icon icon-name="utility:close" onclick={closeModal} alternative-text="close" class="slds-modal__close"></lightning-button-icon>
+                        <h2 class="slds-text-heading_medium">Signature Preview</h2>
+                    </header>
+
+                    <!-- Modal/Popup Body -->
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <div class="signature-container">
+                            <canvas class="signature-canvas" lwc:dom="manual"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Modal/Popup Footer -->
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Close" onclick={closeModal}></lightning-button>
+                    </footer>
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+</template>

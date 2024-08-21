@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Budget Plan PDF Generator">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input type="email" onchange={handleChange} placeholder="type here..." name="emailAddress" required></lightning-input>
+        </div>
+
+        <lightning-button onclick={sendEmailHandler} label="Send Email" variant="brand" ></lightning-button>
+
+        <c-searchable-combobox
+    required="true"
+    label="Searchable Combobox"
+    options={options}
+    value={value}
+    onchange={handleChange}
+></c-searchable-combobox>
+    </lightning-card>
+</template>

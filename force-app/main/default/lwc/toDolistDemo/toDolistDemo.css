@@ -1,0 +1,13 @@
+:host{
+    font-weight: bold;
+    text-align: center;
+}
+.taskclass{
+    background-color: bisque;
+    color: red;
+    padding: 20px;
+}
+.whenTask{
+    background-color: rgb(240, 222, 198);
+    color: blue;
+}

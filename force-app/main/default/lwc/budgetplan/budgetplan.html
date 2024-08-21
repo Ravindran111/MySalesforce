@@ -1,0 +1,48 @@
+<!-- budgetPlanAllocationTable.html -->
+<template>
+    <lightning-card title="Budget Plan Allocation Records">
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+            <div class="slds-size_2-of-4">
+                <div class="slds-box slds-box_x-small slds-m-around_x-small"> 
+                    <lightning-input type="email" onchange={handleChange} placeholder="Type Email Address" name="emailAddress" required></lightning-input>
+                </div>
+            </div>
+            <div class="slds-size_2-of-4">
+                <div class="slds-box slds-box_x-small slds-m-around_x-small">
+                    <lightning-combobox
+                        name="budgetPlanFilter"
+                        label="Budget Plan"
+                        value={selectedBudgetPlan}
+                        options={budgetPlanOptions}
+                        onchange={handleBudgetPlanChange}>
+                    </lightning-combobox>
+                </div>
+            </div>     
+        </div>
+        <div class="slds-m-around_x-small ">
+            <lightning-button onclick={handleSendEmail} label="Send Email" variant="brand"></lightning-button>
+        </div>
+            <div class="slds-m-around_x-small ">
+            <lightning-button onclick={handleDownload} label="Download" variant="brand"></lightning-button>
+        </div>
+        <lightning-datatable
+            key-field="Id"
+            data={pagedData}
+            columns={columns}
+            hide-checkbox-column="true"
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+        <lightning-button-group>
+            <div class="slds-p-around_medium">
+                <lightning-button label="<<Previous" disabled={isPrevDisabled} onclick={handlePagePrevAction} variant="brand" name="Prev"></lightning-button>
+            </div>
+            <div class="slds-p-around_medium slds-box slds-box_x-small slds-m-around_x-small">
+                <span><b>{currentPage} of {totalPages}</b></span>
+            </div>
+            <div class="slds-p-around_medium">
+                <lightning-button label="Next>>" disabled={isNextDisabled} onclick={handlePageNextAction} variant="brand" name="Next">
+                </lightning-button>
+            </div>
+        </lightning-button-group>
+    </lightning-card>
+</template>

@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Lead Manager">
+      <div class="slds-p-around_medium">
+        <lightning-input label="LeadName" type="text" onchange={handleLeadName}></lightning-input>
+        <lightning-input label="LeadSource" type="text"  onchange={handleLeadSource}></lightning-input>
+        <lightning-input label="AnnualRevenue" type="text"  onchange={handleAnnualRevenue}></lightning-input>
+        <lightning-input label="Email" type="text"  onchange={handleEmail}></lightning-input>
+
+     <div class="slds-m-top_medium">
+        <lightning-button-group>
+        <lightning-button class="slds-p-around_large" label="ADD " type="button" onclick={handleADD}></lightning-button>
+        <lightning-button class="slds-p-around_large" label="CLEAR" type="button" onclick={handlCLEAR}></lightning-button>
+        <lightning-button class="slds-p-around_large" label="DISPLAY" type="button" onclick={handleDISPLAY}></lightning-button>
+    </lightning-button-group>
+      </div>
+
+      <template lwc:if={showError}>
+        <p class="slds-text-color_error">
+            <b> please fill all field before Adding Leads</b>
+        </p>  
+      </template>
+      <template lwc:elseif={showNoLeads}>
+       <p> Oops...No Lead Added Yet!</p>
+      </template>
+      <template lwc:else>
+         <ul class="slds-list_horizontal">
+            <template for:each={leads} for:item="lead">
+                <li key={lead.id}>
+                    <p> {lead.name},{lead.source},{lead.revenue},{lead.Email}</p>
+                </li>
+            </template>
+         </ul>
+      </template>
+    </div>
+    </lightning-card>
+    
+</template>
