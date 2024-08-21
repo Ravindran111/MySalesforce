@@ -33,7 +33,7 @@ export default class SignatureComponent extends LightningElement {
         context.textAlign = 'center'; // Align text to the center
         context.textBaseline = 'middle'; // Align text vertically in the middle
 
-        // Clear the canvas
+        // Clear the canvas clear
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw the text
